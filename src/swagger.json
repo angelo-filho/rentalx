@@ -72,7 +72,7 @@
         }
       }
     },
-    "/categories/imports": {
+    "/categories/import": {
       "post": {
         "tags": ["Category"],
         "summary": "Import a csv file",
@@ -80,18 +80,22 @@
         "parameters": [],
         "requestBody": {
           "content": {
-            "type": {
-              "encoding": {
-                "type": {
-                  "contentType": "file"
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "203": {
-            "description": "No response body"
+          "201": {
+            "description": "Created"
           }
         }
       }
