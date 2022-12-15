@@ -71,6 +71,64 @@
           }
         }
       }
+    },
+    "/categories/imports": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "Import a csv file",
+        "description": "Import a csv file and transform it information into categories instance",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "type": {
+              "encoding": {
+                "type": {
+                  "contentType": "file"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/specifications": {
+      "post": {
+        "tags": ["Specification"],
+        "summary": "Create a new specification",
+        "description": "Create a new specification",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "name": "John Doe",
+                "description": "A super cool description"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   }
 }
