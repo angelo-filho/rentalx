@@ -90,8 +90,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "203": {
+            "description": "No response body"
           }
         }
       }
@@ -124,8 +124,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Created"
           }
         }
       }
