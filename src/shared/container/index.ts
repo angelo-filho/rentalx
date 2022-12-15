@@ -11,6 +11,6 @@ container.registerSingleton<ICategoriesRepository>(
 );
 
 container.registerSingleton<ISpecificationsRepository>(
-  "SpecificationRepository",
+  "SpecificationsRepository",
   SpecificationsRepository
 );
