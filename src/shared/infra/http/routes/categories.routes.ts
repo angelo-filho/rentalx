@@ -4,6 +4,7 @@ import { ListCategoriesController } from "@modules/cars/useCases/listCategories/
 import { Router } from "express";
 import multer from "multer";
 
+import { ensureAdmin } from "../middlewares/ensureAdmin";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenicated";
 
 const categoriesRoutes = Router();
@@ -19,6 +20,7 @@ const listCategoriesController = new ListCategoriesController();
 categoriesRoutes.post(
   "/",
   ensureAuthenticated,
+  ensureAdmin,
   createCategoryController.handle
 );
 
@@ -27,6 +29,8 @@ categoriesRoutes.get("/", listCategoriesController.handle);
 categoriesRoutes.post(
   "/import",
   upload.single("file"),
+  ensureAuthenticated,
+  ensureAdmin,
   importCategoryController.handle
 );
 
