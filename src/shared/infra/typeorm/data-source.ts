@@ -10,8 +10,7 @@ const AppDataSource = new DataSource({
   synchronize: false,
   logging: false,
   entities: ["./src/modules/**/entities/*.ts"],
-  migrations: ["./src/shared/infra/typeorm/migrations/*.ts"],
-  subscribers: [],
+  migrations: [`./src/shared/infra/typeorm/migrations/*.ts`],
 });
 
 export function createConnection(

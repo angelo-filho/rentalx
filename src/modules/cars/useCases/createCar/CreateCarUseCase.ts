@@ -1,6 +1,6 @@
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
-import { ICarRepository } from "@modules/cars/repositories/ICarsRepository";
-// import { inject, injectable } from "tsyringe";
+import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
+import { inject, injectable } from "tsyringe";
 
 import { AppError } from "@shared/errors/AppError";
 
@@ -14,11 +14,11 @@ interface IRequest {
   category_id: string;
 }
 
-// @injectable()
+@injectable()
 class CreateCarUseCase {
   constructor(
-    // @inject("CarsRepository")
-    private carsRepository: ICarRepository
+    @inject("CarsRepository")
+    private carsRepository: ICarsRepository
   ) {}
 
   async execute({
