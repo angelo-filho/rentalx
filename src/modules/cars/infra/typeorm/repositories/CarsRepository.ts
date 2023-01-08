@@ -63,7 +63,6 @@ class CarsRepository implements ICarsRepository {
     }
 
     const cars = await carsQuery.getMany();
-    console.log("Hi");
 
     return cars;
   }
