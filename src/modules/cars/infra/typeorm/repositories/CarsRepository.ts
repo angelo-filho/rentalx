@@ -21,6 +21,7 @@ class CarsRepository implements ICarsRepository {
     daily_rate,
     fine_amount,
     license_plate,
+    id,
   }: ICreateCarDTO): Promise<Car> {
     const car = this.repository.create({
       name,
@@ -30,6 +31,7 @@ class CarsRepository implements ICarsRepository {
       daily_rate,
       fine_amount,
       license_plate,
+      id,
     });
 
     await this.repository.save(car);
@@ -65,6 +67,12 @@ class CarsRepository implements ICarsRepository {
     const cars = await carsQuery.getMany();
 
     return cars;
+  }
+
+  findById(id: string): Promise<Car> {
+    const car = this.repository.findOneBy({ id });
+
+    return car;
   }
 }
 export { CarsRepository };
