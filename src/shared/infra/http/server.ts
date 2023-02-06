@@ -10,6 +10,7 @@ import { router } from "@shared/infra/http/routes";
 import swaggerFile from "../../../swagger.json";
 import { createConnection } from "../typeorm/data-source";
 import "../../container";
+import "@shared/container/providers/DateProvider";
 
 createConnection();
 
