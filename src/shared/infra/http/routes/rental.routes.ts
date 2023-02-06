@@ -1,4 +1,4 @@
-import { CreateRentalController } from "@modules/Rentals/useCases/createRental/CreateRentalController";
+import { CreateRentalController } from "@modules/rentals/useCases/createRental/CreateRentalController";
 import { Router } from "express";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenicated";

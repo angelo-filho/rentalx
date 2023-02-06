@@ -6,7 +6,7 @@ const AppDataSource = new DataSource({
   port: 5432,
   username: "docker",
   password: "ignite",
-  database: "rentx",
+  database: process.env.NODE_ENV === "test" ? "rentx_test" : "rentx",
   synchronize: false,
   logging: false,
   entities: ["./src/modules/**/entities/*.ts"],
@@ -14,9 +14,11 @@ const AppDataSource = new DataSource({
 });
 
 export function createConnection(
-  host = "database_ignite"
+  host = process.env.NODE_ENV === "test" ? "localhost" : "database_ignite"
 ): Promise<DataSource> {
-  return AppDataSource.setOptions({ host }).initialize();
+  return AppDataSource.setOptions({
+    host,
+  }).initialize();
 }
 
 export default AppDataSource;
