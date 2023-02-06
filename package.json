@@ -7,6 +7,7 @@
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
     "test": "NODE_ENV=test jest",
+    "test:super": "NODE_ENV=test jest --runInBand",
     "seed:admin": "ts-node src/shared/infra/typeorm/seed/admin.ts"
   },
   "dependencies": {
