@@ -15,7 +15,7 @@ class DevolutionRentalUseCase {
   constructor(
     @inject("RentalsRepository")
     private rentalsRepository: IRentalsRepository,
-    @inject("carsRepository")
+    @inject("CarsRepository")
     private carsRepository: ICarsRepository,
     @inject("DateProvider")
     private dateProvider: IDateProvider
@@ -32,18 +32,15 @@ class DevolutionRentalUseCase {
 
     const dateNow = this.dateProvider.dateNow();
 
-    let daily = this.dateProvider.compareInDays(
-      dateNow,
-      rental.expected_return_date
-    );
+    let daily = this.dateProvider.compareInDays(dateNow, rental.start_date);
 
     if (daily <= 0) {
       daily = minimum_daily;
     }
 
     const delay = this.dateProvider.compareInDays(
-      dateNow,
-      rental.expected_return_date
+      rental.expected_return_date,
+      dateNow
     );
 
     let total = 0;
@@ -53,7 +50,7 @@ class DevolutionRentalUseCase {
       total = calculate_fine;
     }
 
-    total += delay * car.daily_rate;
+    total += daily * car.daily_rate;
 
     rental.end_date = this.dateProvider.dateNow();
     rental.total = total;
