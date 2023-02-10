@@ -1,31 +1,33 @@
-import { ICreateUserTokensDTO } from "@modules/accounts/dtos/ICreateUserTokenDTO";
-import { IUserTokensRepository } from "@modules/accounts/repositories/IUserTokensRepository";
+import { ICreateUsersTokensDTO } from "@modules/accounts/dtos/ICreateUsersTokenDTO";
+import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
 import { Repository } from "typeorm";
 
 import AppDataSource from "@shared/infra/typeorm/data-source";
 
-import { UserTokens } from "../entities/UserTokens";
+import { UsersTokens } from "../entities/UsersTokens";
 
-class UserTokensRepository implements IUserTokensRepository {
-  private repository: Repository<UserTokens>;
+class UsersTokensRepository implements IUsersTokensRepository {
+  private repository: Repository<UsersTokens>;
 
   constructor() {
-    this.repository = AppDataSource.getRepository(UserTokens);
+    this.repository = AppDataSource.getRepository(UsersTokens);
   }
 
   async create({
     expires_date,
     refresh_token,
     user_id,
-  }: ICreateUserTokensDTO): Promise<UserTokens> {
+  }: ICreateUsersTokensDTO): Promise<UsersTokens> {
     const userToken = this.repository.create({
       refresh_token,
       user_id,
       expires_date,
     });
 
+    this.repository.save(userToken);
+
     return userToken;
   }
 }
 
-export { UserTokensRepository };
+export { UsersTokensRepository };

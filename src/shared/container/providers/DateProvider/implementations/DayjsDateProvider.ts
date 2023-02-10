@@ -15,6 +15,14 @@ class DayjsDateProvider implements IDateProvider {
     return compare;
   }
 
+  addDays(days_to_add: number) {
+    const sum = dayjs().add(days_to_add, "days");
+
+    const convertedSum = this.convertToUTC(sum.toDate());
+
+    return convertedSum;
+  }
+
   convertToUTC(date: Date): string {
     return dayjs(date).utc().local().format();
   }
