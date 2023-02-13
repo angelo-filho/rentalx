@@ -24,7 +24,7 @@ class UsersTokensRepository implements IUsersTokensRepository {
       expires_date,
     });
 
-    this.repository.save(userToken);
+    await this.repository.save(userToken);
 
     return userToken;
   }

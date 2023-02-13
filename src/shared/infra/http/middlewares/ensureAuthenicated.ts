@@ -15,6 +15,7 @@ export async function ensureAuthenticated(
   next: NextFunction
 ) {
   const authHeader = request.headers.authorization;
+
   const usersTokensRepository = new UsersTokensRepository();
 
   if (!authHeader) {
@@ -33,6 +34,13 @@ export async function ensureAuthenticated(
       user_id,
       token
     );
+
+    console.log({
+      user_id,
+      token,
+    });
+
+    console.log(user);
 
     if (!user) {
       throw new AppError("User does not exists", 401);
