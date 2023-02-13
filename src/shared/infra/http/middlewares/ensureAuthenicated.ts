@@ -35,13 +35,6 @@ export async function ensureAuthenticated(
       token
     );
 
-    console.log({
-      user_id,
-      token,
-    });
-
-    console.log(user);
-
     if (!user) {
       throw new AppError("User does not exists", 401);
     }

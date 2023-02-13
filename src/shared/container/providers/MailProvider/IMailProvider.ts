@@ -1,8 +1,8 @@
 interface IMailProvider {
-  sendMail<T>(
+  sendMail(
     to: string,
     subject: string,
-    variables: T,
+    variables: any,
     path: string
   ): Promise<void>;
 }

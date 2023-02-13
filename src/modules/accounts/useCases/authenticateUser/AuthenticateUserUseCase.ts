@@ -80,8 +80,6 @@ class AuthenticateUserUseCase {
       expires_date: refresh_token_expires_date,
     });
 
-    console.log(a);
-
     const tokenReturn: IResponse = {
       user: {
         name: user.name,
