@@ -1,6 +1,6 @@
 import "reflect-metadata";
 
-import dotenv from "dotenv";
+import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
@@ -12,8 +12,6 @@ import swaggerFile from "../../../swagger.json";
 import { createConnection } from "../typeorm/data-source";
 import "../../container";
 import "@shared/container/providers";
-
-dotenv.config();
 
 createConnection();
 
