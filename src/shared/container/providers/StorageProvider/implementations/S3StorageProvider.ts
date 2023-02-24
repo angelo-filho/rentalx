@@ -6,7 +6,7 @@ import { resolve } from "path";
 
 import { IStorageProvider } from "../IStorageProvider";
 
-class S3StoreProvider implements IStorageProvider {
+class S3StorageProvider implements IStorageProvider {
   private client: S3;
 
   constructor() {
@@ -28,6 +28,7 @@ class S3StoreProvider implements IStorageProvider {
         Key: file,
         Body: fileContent,
         ContentType,
+        ACL: "public-read",
       })
       .promise();
 
@@ -46,4 +47,4 @@ class S3StoreProvider implements IStorageProvider {
   }
 }
 
-export { S3StoreProvider };
+export { S3StorageProvider };
