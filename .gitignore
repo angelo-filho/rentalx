@@ -128,3 +128,5 @@ dist
 
 tmp/*
 !tmp/.gitkeep
+
+typeorm.config.ts
