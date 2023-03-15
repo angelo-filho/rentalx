@@ -13,12 +13,8 @@ const AppDataSource = new DataSource({
   migrations: [`./src/shared/infra/typeorm/migrations/*.ts`],
 });
 
-export function createConnection(
-  host = process.env.NODE_ENV === "test" ? "localhost" : "database_ignite"
-): Promise<DataSource> {
-  return AppDataSource.setOptions({
-    host,
-  }).initialize();
+export function createConnection(): Promise<DataSource> {
+  return AppDataSource.initialize();
 }
 
 export default AppDataSource;
