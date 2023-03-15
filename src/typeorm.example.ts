@@ -1,3 +1,4 @@
+// Create a file named typeorm.config.ts to run properly
 import { DataSourceOptions } from "typeorm";
 
 export const config: DataSourceOptions = {
