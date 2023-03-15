@@ -10,6 +10,14 @@ export const config: DataSourceOptions = {
   database: process.env.NODE_ENV === "test" ? "rentx_test" : "rentx",
   synchronize: false,
   logging: false,
-  entities: ["./src/modules/**/entities/*.ts"],
-  migrations: [`./src/shared/infra/typeorm/migrations/*.ts`],
+  entities: [
+    process.env.NODE_ENV === "production"
+      ? "./dist/src/modules/**/entities/*.ts"
+      : "./src/modules/**/entities/*.ts",
+  ],
+  migrations: [
+    process.env.NODE_ENV === "production"
+      ? "./dist/src/shared/infra/typeorm/migrations/*.ts"
+      : "./src/shared/infra/typeorm/migrations/*.ts",
+  ],
 };
