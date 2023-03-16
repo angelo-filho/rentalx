@@ -12,12 +12,12 @@ export const config: DataSourceOptions = {
   logging: false,
   entities: [
     process.env.NODE_ENV === "production"
-      ? "./dist/src/modules/**/entities/*.ts"
+      ? "./dist/modules/**/entities/*.js"
       : "./src/modules/**/entities/*.ts",
   ],
   migrations: [
     process.env.NODE_ENV === "production"
-      ? "./dist/src/shared/infra/typeorm/migrations/*.ts"
+      ? "./dist/shared/infra/typeorm/migrations/*.js"
       : "./src/shared/infra/typeorm/migrations/*.ts",
   ],
 };
